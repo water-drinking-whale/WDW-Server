@@ -1,6 +1,7 @@
 package com.wdw.wdw.dto.user;
 
 import com.wdw.wdw.domain.User;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserGetResponseDto {
 
+    @ApiModelProperty(value = "사용자 이름", example = "길태환")
     private String name;
 
+    @ApiModelProperty(value = "사용자 몸무게", example = "길태환")
     private Integer weight;
 
+    @ApiModelProperty(value = "사용자기 연속으로 마신날", example = "길태환")
     private Integer consecutiveDays;
 
+    @ApiModelProperty(value = "사용자가 마신 총량", example = "길태환")
     private Integer waterIntake;
 
 

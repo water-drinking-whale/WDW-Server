@@ -1,6 +1,7 @@
 package com.wdw.wdw.dto.user;
 
 import com.wdw.wdw.domain.Badge;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class UserBadgeResponseDto {
 
+    @ApiModelProperty(value = "사용자가 보유한 뱃지")
     private List<Badge> badgeList;
 
     @Builder
