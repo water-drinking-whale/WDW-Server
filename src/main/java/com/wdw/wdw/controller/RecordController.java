@@ -7,6 +7,7 @@ import com.wdw.wdw.dto.record.RecordGetDailyWaterResponseDto;
 import com.wdw.wdw.infra.ApiResponse;
 import com.wdw.wdw.infra.jwt.PrincipalDetails;
 import com.wdw.wdw.service.RecordService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,26 +25,26 @@ public class RecordController {
     private final RecordService recordService;
 
     @PostMapping(value = "/record/add")
+    @ApiOperation(value = "기록 추가")
     public ApiResponse<RecordAddResponseDto> add(@AuthenticationPrincipal PrincipalDetails details, @RequestBody RecordAddRequestDto req) {
-        log.info("기록 추가");
         return ApiResponse.success(HttpStatus.OK, recordService.addRecord(details.getUser(), req));
     }
 
     @GetMapping(value = "/record/today")
+    @ApiOperation(value = "일간 기록 조회")
     public ApiResponse<RecordGetDailyWaterResponseDto> getDaily(@AuthenticationPrincipal PrincipalDetails details) {
-        log.info("일간 기록 조회");
         return ApiResponse.success(HttpStatus.OK, recordService.findDailyRecord(details.getUser(), LocalDate.now()));
     }
 
     @GetMapping(value = "/record/week")
+    @ApiOperation(value = "주간 기록 조회")
     public ApiResponse<RecordGetWaterListResponseDto> getWeekly(@AuthenticationPrincipal PrincipalDetails details) {
-        log.info("주간 기록 조회");
         return ApiResponse.success(HttpStatus.OK, recordService.findWeeklyRecord(details.getUser(), LocalDate.now()));
     }
 
     @GetMapping(value = "/record/month")
+    @ApiOperation(value = "월간 기록 조회")
     public ApiResponse<RecordGetWaterListResponseDto> getMonthly(@AuthenticationPrincipal PrincipalDetails details) {
-        log.info("월간 기록 조회");
         return ApiResponse.success(HttpStatus.OK, recordService.findMonthlyRecord(details.getUser(), LocalDate.now()));
     }
 }
