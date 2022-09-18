@@ -1,6 +1,7 @@
 package com.wdw.wdw.dto.user;
 
 import com.wdw.wdw.domain.User;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,22 +10,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserUpdateResponseDto {
 
+    @ApiModelProperty(value = "변경된 이름", example = "길태환")
     private String name;
 
+    @ApiModelProperty(value = "변경된 몸무게", example = "길태환")
     private Integer weight;
 
-    private Integer consecutiveDays;
 
-    private Integer waterIntake;
-
+    @ApiModelProperty(value = "변경 성공 여부", example = "updated")
     private String updateDone;
 
     @Builder
-    public UserUpdateResponseDto(String name, Integer weight, Integer consecutiveDays, Integer waterIntake, String updateDone) {
+    public UserUpdateResponseDto(String name, Integer weight, String updateDone) {
         this.name = name;
         this.weight = weight;
-        this.consecutiveDays = consecutiveDays;
-        this.waterIntake = waterIntake;
         this.updateDone = updateDone;
     }
 
@@ -32,8 +31,6 @@ public class UserUpdateResponseDto {
         return UserUpdateResponseDto.builder()
                 .name(user.getName())
                 .weight(user.getWeight())
-                .consecutiveDays(user.getConsecutiveDays())
-                .waterIntake(user.getWaterIntake())
                 .updateDone(updateDone)
                 .build();
     }
