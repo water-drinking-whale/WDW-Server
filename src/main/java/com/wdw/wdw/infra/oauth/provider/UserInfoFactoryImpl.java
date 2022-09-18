@@ -9,14 +9,15 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class UserInfoFactoryImpl implements UserInfoFactory{
+public class UserInfoFactoryImpl implements UserInfoFactory {
     @Override
     public OAuth2UserInfo makeUserInfo(OAuth2UserRequest userRequest, Map<String, Object> attributes) throws InvalidProviderTypeException {
-        switch (userRequest.getClientRegistration().getRegistrationId()) {
-            case "google":
+        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+        switch (registrationId) {
+            case ProviderType.GOOGLE:
                 log.info("구글 로그인");
                 return new GoogleUserInfo(attributes);
-            case "kakao":
+            case ProviderType.KAKAO:
                 log.info("카카오 로그인");
                 return new KakaoUserInfo(attributes);
             default:

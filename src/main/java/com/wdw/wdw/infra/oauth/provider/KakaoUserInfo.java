@@ -2,7 +2,7 @@ package com.wdw.wdw.infra.oauth.provider;
 
 import java.util.Map;
 
-public class KakaoUserInfo implements OAuth2UserInfo{
+public class KakaoUserInfo implements OAuth2UserInfo {
 
     private Map<String, Object> attributes;
     private Map<String, Object> attributesAccount;
@@ -21,12 +21,7 @@ public class KakaoUserInfo implements OAuth2UserInfo{
 
     @Override
     public String getProvider() {
-        return "kakao";
-    }
-
-    @Override
-    public String getEmail() {
-        return null;
+        return ProviderType.KAKAO;
     }
 
     @Override
