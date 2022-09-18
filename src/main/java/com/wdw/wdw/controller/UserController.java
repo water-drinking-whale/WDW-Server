@@ -12,6 +12,7 @@ import com.wdw.wdw.infra.ApiResponse;
 import com.wdw.wdw.infra.jwt.PrincipalDetails;
 import com.wdw.wdw.service.AchievementService;
 import com.wdw.wdw.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -34,8 +35,8 @@ public class UserController {
     private final AchievementService achievementService;
 
     @PostMapping("/join")
+    @ApiOperation(value = "회원가입")
     public ApiResponse<UserJoinResponseDto> join(@RequestBody UserJoinRequestDto req){
-        log.info("회원가입");
         return ApiResponse.success(HttpStatus.OK, userService.signUp(req));
     }
 
@@ -55,6 +56,7 @@ public class UserController {
     }
 
     @GetMapping("/user/badge")
+    @ApiOperation(value = "뱃지 목록 조회")
     public ApiResponse<UserBadgeResponseDto> badge(@AuthenticationPrincipal PrincipalDetails details) {
         return ApiResponse.success(HttpStatus.OK, achievementService.getBadgeList(details.getUser()));
     }

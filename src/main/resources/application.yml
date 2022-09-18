@@ -9,6 +9,9 @@ spring:
     url: ENC(XY8yZTMmye7QjU6j0pzrrbUGJQnx8FfxRTISOKG36a4xbq9JiaCGU5qWLSQeOpHO89xn8+eXaad5/C2LhHpqjPvjKcfjbh05pmW0+IVxxHYRJgMXCjflJQ==)
     username: ENC(wHVzLrcm3E13azGi9I/Kag==)
     password: ENC(s3e3oTYr2hNWoTNEpM/m32SlSNW+7jCi)
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
   jpa:
     hibernate:
