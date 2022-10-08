@@ -41,6 +41,9 @@ public class UserService {
     public UserUpdateResponseDto update(String username, UserUpdateRequestDto req) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(EntityNotFoundException::new);
+        if (!req.getPassword().equals(user.getPassword())) {
+            req.setPassword(passwordEncoder.encode(req.getPassword()));
+        }
         user.userUpdate(req);
         userRepository.save(user);
         return UserUpdateResponseDto.from(user, "updated");
