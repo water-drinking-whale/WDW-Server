@@ -41,10 +41,9 @@ public class UserService {
     public UserUpdateResponseDto update(String username, UserUpdateRequestDto req) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(EntityNotFoundException::new);
-        if (!req.getPassword().equals(user.getPassword())) {
-            req.setPassword(passwordEncoder.encode(req.getPassword()));
-        }
-        user.userUpdate(req);
+
+        String password = encryptPassword(req.getPassword(), user);
+        user.userUpdate(password, req.getName(), req.getWeight());
         userRepository.save(user);
         return UserUpdateResponseDto.from(user, "updated");
     }
@@ -53,5 +52,14 @@ public class UserService {
         return userRepository.findByUsername(username)
                 .map(user -> new UserExistResponseDto("unusable"))
                 .orElse(new UserExistResponseDto("usable"));
+    }
+
+    private String encryptPassword(String password, User user) {
+        if (password == null || password.isEmpty()) {
+            password = user.getPassword();
+        } else {
+            password = passwordEncoder.encode(password);
+        }
+        return password;
     }
 }

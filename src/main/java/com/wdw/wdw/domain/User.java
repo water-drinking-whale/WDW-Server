@@ -1,6 +1,5 @@
 package com.wdw.wdw.domain;
 
-import com.wdw.wdw.dto.user.UserUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +28,7 @@ public class User {
     @Column(name = "user_seq")
     private Long id;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -87,10 +87,10 @@ public class User {
         this.waterIntake = waterIntake;
     }
 
-    public void userUpdate(UserUpdateRequestDto req) {
-        this.password = req.getPassword();
-        this.name = req.getName();
-        this.weight = req.getWeight();
+    public void userUpdate(String password, String Name, Integer weight) {
+        this.password = password;
+        this.name = name;
+        this.weight = weight;
     }
 
     public Integer getGoalAmount() {
