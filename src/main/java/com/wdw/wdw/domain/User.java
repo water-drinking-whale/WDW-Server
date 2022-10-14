@@ -87,7 +87,7 @@ public class User {
         this.waterIntake = waterIntake;
     }
 
-    public void userUpdate(String password, String Name, Integer weight) {
+    public void userUpdate(String password, String name, Integer weight) {
         this.password = password;
         this.name = name;
         this.weight = weight;
