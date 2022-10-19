@@ -21,7 +21,7 @@ public class Record {
 
     private Integer quantity;
 
-    private LocalDate recordTime;
+    private LocalDate recordDate;
 
     @Builder
     public Record(
@@ -33,12 +33,12 @@ public class Record {
         this.id = id;
         this.user = user;
         this.quantity = quantity;
-        this.recordTime = date;
+        this.recordDate = date;
     }
 
 
     public Record() {
-        this.recordTime = LocalDate.now();
+        this.recordDate = LocalDate.now();
     }
 
     public void setUser(User user) {

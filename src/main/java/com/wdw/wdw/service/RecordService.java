@@ -73,11 +73,11 @@ public class RecordService {
         List<CustomizedCalendarDto> convertedList = new ArrayList<>();
 
         for (IntakeRecord model : targetList) {
-            LocalDate recordTime = model.getRecordTime();
+            LocalDate recordDate = model.getRecordDate();
             Long totalSum = model.getTotalSum();
 
             CustomizedCalendarDto customizedDto = CustomizedCalendarDto.builder()
-                    .recordTime(recordTime)
+                    .recordDate(recordDate)
                     .totalSum(totalSum)
                     .build();
 
