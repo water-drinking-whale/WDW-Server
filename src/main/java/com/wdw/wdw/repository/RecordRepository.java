@@ -14,17 +14,17 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
 
     @Query(value = "select sum(r.quantity) from Record r "
             + "where r.user = :user " +
-            "and r.recordTime = :time")
+            "and r.recordDate = :time")
     Integer findQuantity(
             @Param("user") User user,
             @Param("time") LocalDate targetTime
     );
 
-    @Query(value = "select new com.wdw.wdw.dto.record.IntakeRecord(r.recordTime, sum(r.quantity)) from Record r " +
-            "where r.user = :user and r.recordTime " +
+    @Query(value = "select new com.wdw.wdw.dto.record.IntakeRecord(r.recordDate, sum(r.quantity)) from Record r " +
+            "where r.user = :user and r.recordDate " +
             "between :start and :end " +
-            "group by r.recordTime " +
-            "order by r.recordTime")
+            "group by r.recordDate " +
+            "order by r.recordDate")
     List<IntakeRecord> findPastRecords(
             @Param("user") User user,
             @Param("start") LocalDate start,

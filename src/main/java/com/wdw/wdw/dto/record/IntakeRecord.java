@@ -10,11 +10,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class IntakeRecord implements Serializable {
 
-    private LocalDate recordTime;
+    private LocalDate recordDate;
     private Long totalSum;
 
-    public IntakeRecord(LocalDate recordTime, Long totalSum) {
-        this.recordTime = recordTime;
+    public IntakeRecord(LocalDate recordDate, Long totalSum) {
+        this.recordDate = recordDate;
         this.totalSum = totalSum;
     }
 }

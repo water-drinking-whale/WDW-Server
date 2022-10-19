@@ -9,13 +9,13 @@ import java.time.LocalDate;
 @Getter
 public class CustomizedCalendarDto {
     @ApiModelProperty(value = "조회일 날짜", example = "2022-09-18")
-    private LocalDate recordTime;
+    private LocalDate recordDate;
     @ApiModelProperty(value = "해당일 섭취 총량", example = "1200(ml)")
     private Long totalSum;
 
     @Builder
-    public CustomizedCalendarDto(LocalDate recordTime, Long totalSum) {
-        this.recordTime = recordTime;
+    public CustomizedCalendarDto(LocalDate recordDate, Long totalSum) {
+        this.recordDate = recordDate;
         this.totalSum = totalSum;
     }
 }
