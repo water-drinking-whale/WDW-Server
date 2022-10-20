@@ -17,5 +17,7 @@ public enum BadgeType {
     private Integer consecutiveDay;
 
     BadgeType(Integer intakeOfSum, Integer consecutiveDay) {
+        this.intakeOfSum = intakeOfSum;
+        this.consecutiveDay = consecutiveDay;
     }
 }
