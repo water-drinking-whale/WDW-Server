@@ -33,6 +33,7 @@ public class UserService {
                 .roles(ROLE_USER)
                 .consecutiveDays(0)
                 .waterIntake(0)
+                .weight(0)
                 .build();
         userRepository.save(user);
         return UserJoinResponseDto.from(user);
