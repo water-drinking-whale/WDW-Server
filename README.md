@@ -1,2 +1,2 @@
 # WDW-Server
-WDW SpringBoot Server
+WDW-Spring
